@@ -353,7 +353,7 @@ class CommandBase(object):
         binary_path = path.join(base_path, build_type.directory_name(), binary_name)
 
         if not path.exists(binary_path):
-            raise BuildNotFound("No Servo binary found. Perhaps you forgot to run `./mach build`?")
+            raise BuildNotFound(f"No Servo binary found: '{binary_path}'. Perhaps you forgot to run `./mach build`?")
 
         return binary_path
 
