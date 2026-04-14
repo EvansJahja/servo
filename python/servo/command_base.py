@@ -353,7 +353,14 @@ class CommandBase(object):
         binary_path = path.join(base_path, build_type.directory_name(), binary_name)
 
         if not path.exists(binary_path):
-            raise BuildNotFound(f"No Servo binary found: '{binary_path}'. Perhaps you forgot to run `./mach build`?")
+            import os
+            from glob import glob
+            binary_dir = os.path.join(base_path, build_type.directory_name())
+            dir_str = "\n".join([x + ('/' if os.path.isdir(x) else '') for x in glob(f"{binary_dir}/*")])
+
+
+
+            raise BuildNotFound(f"No Servo binary found: '{binary_path}'. Contents of {binary_dir}: \n\n{dir_str}\n. Perhaps you forgot to run `./mach build`?")
 
         return binary_path
 
