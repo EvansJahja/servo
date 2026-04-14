@@ -34,4 +34,3 @@ RUSTC_BOOTSTRAP = "crown,script,script_bindings,style_tests,mozjs,mozjs_sys"
 
 [build]
 rustdocflags = ["--document-private-items"]
-target = "aarch64-unknown-linux-gnu"
